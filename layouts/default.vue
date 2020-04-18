@@ -7,6 +7,18 @@
 <script>
 import NavBar from '~/components/NavBar.vue'
 export default {
+  head() {
+    return {
+      titleTemplate: '%s - Nuxt Events',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'All events'
+        }
+      ]
+    }
+  },
   components: {
     NavBar
   }
