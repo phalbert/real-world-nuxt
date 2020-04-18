@@ -6,7 +6,6 @@
         {{ event.title }}
       </h3>
       <h5>Organized by {{ event.organizer ? event.organizer.name : '' }}</h5>
-      <h5>Category: {{ event.category }}</h5>
     </div>
 
     <span name="map">
