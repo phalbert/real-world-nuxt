@@ -23,5 +23,9 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a single command using the runners shell
+    - name: Install yarn modules
+      run: yarn
+    
+    # Runs a single command using the runners shell
     - name: Generate static site
       run: yarn generate
