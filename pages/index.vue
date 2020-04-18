@@ -17,20 +17,18 @@ export default {
   components: {
     EventCard
   },
-  asyncData({ $axios, error }) {
-    return $axios
-      .get('https://5d6516c05b26ae001489eb85.mockapi.io/api/v1/events')
-      .then((response) => {
-        return {
-          events: response.data
-        }
+  async asyncData({ $axios, error }) {
+    try {
+      const response = await $axios.get(
+        'https://5d6516c05b26ae001489eb85.mockapi.io/api/v1/events'
+      )
+      return { events: response.data }
+    } catch (e) {
+      error({
+        statusCode: 503,
+        message: 'Unable to fetch events at this time, please try again'
       })
-      .catch((e) => {
-        error({
-          statusCode: 503,
-          message: 'Unable to fetch events at this time, please try again'
-        })
-      })
+    }
   },
   head() {
     return {
