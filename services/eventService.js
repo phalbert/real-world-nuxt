@@ -1,5 +1,4 @@
 import axios from 'axios'
-import NProgress from 'nprogress'
 
 const apiClient = axios.create({
   baseURL: `https://5d6516c05b26ae001489eb85.mockapi.io/api/v1`,
@@ -11,19 +10,9 @@ const apiClient = axios.create({
   timeout: 10000
 })
 
-apiClient.interceptors.request.use((config) => {
-  NProgress.start()
-  return config
-})
-
-apiClient.interceptors.response.use((response) => {
-  NProgress.done()
-  return response
-})
-
 export default {
   getEvents(page, perPage) {
-    return apiClient.get('/events?page=' + perPage + ' &limit=' + page)
+    return apiClient.get('/events?page=' + page + ' &limit=' + perPage)
   },
   getEvent(id) {
     return apiClient.get('/events/' + id)

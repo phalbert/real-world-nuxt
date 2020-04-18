@@ -5,13 +5,13 @@
 </template>
 
 <script>
+import EventService from '@/services/EventService.js'
+
 export default {
-  async asyncData({ $axios, error, params }) {
+  async asyncData({ error, params }) {
     try {
-      const response = await $axios.get(
-        `https://5d6516c05b26ae001489eb85.mockapi.io/api/v1/events/${params.id}`
-      )
-      return { event: response.data }
+      const { data } = await EventService.getEvent(params.id)
+      return { event: data }
     } catch (e) {
       error({
         statusCode: 503,

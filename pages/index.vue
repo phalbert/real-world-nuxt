@@ -12,6 +12,7 @@
 
 <script>
 import EventCard from '@/components/EventCard'
+import EventService from '@/services/EventService.js'
 
 export default {
   components: {
@@ -19,10 +20,8 @@ export default {
   },
   async asyncData({ $axios, error }) {
     try {
-      const response = await $axios.get(
-        'https://5d6516c05b26ae001489eb85.mockapi.io/api/v1/events'
-      )
-      return { events: response.data }
+      const { data } = await EventService.getEvents(1, 10)
+      return { events: data }
     } catch (e) {
       error({
         statusCode: 503,
