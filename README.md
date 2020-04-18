@@ -1,6 +1,7 @@
 # real-world-nuxt
 
 > Learn Nuxt world
+* [Nuggets](docs/index.md)
 
 ## Build Setup
 
